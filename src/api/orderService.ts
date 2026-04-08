@@ -1,5 +1,30 @@
 import axiosInstance from './axiosInstance';
-import { Order, OrderStatus } from '../types';
+
+export type OrderStatus =
+  | 'PENDING'
+  | 'PROCESSING'
+  | 'SHIPPED'
+  | 'DELIVERED'
+  | 'CANCELLED';
+
+export type PaymentMethod =
+  | 'CREDIT_CARD'
+  | 'PAYPAL'
+  | 'MOBILE_MONEY'
+  | 'CASH_ON_DELIVERY';
+
+export interface Order {
+  id: string;
+  status: OrderStatus;
+  totalAmount: number;
+  paymentMethod: PaymentMethod;
+  shippingAddress: string;
+  city: string;
+  postalCode?: string;
+  phone: string;
+  user?: { id: string; name: string; email: string };
+  createdAt: string;
+}
 
 export interface OrderPayload {
   shippingAddress: string;

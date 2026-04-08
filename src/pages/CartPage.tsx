@@ -21,45 +21,47 @@ const CartPage = () => {
 
   return (
     <Layout>
-      <h1 className="font-display text-3xl font-bold text-white mb-8">Shopping Cart</h1>
-      <div className="grid lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-2 flex flex-col gap-4">
-          {items.map(({ product, quantity }) => (
-            <div key={product.id} className="glass rounded-xl p-4 flex gap-4 items-center">
-              <img
-                src={product.images?.[0] || 'https://picsum.photos/80'}
-                alt={product.title}
-                className="w-20 h-20 rounded-lg object-cover flex-shrink-0"
-                onError={(e) => { (e.target as HTMLImageElement).src = 'https://picsum.photos/80'; }}
-              />
-              <div className="flex-1 min-w-0">
-                <h3 className="text-white font-medium line-clamp-1">{product.title}</h3>
-                <p className="text-white/50 text-sm">{product.brand}</p>
-                <p className="text-purple-400 font-semibold">${product.price.toFixed(2)}</p>
-              </div>
-              <div className="flex items-center gap-2">
+      <div className="gap-8 grid grid-cols-1 lg:grid-cols-3">
+        <div className="lg:col-span-2">
+          <h1 className="font-display text-3xl font-bold text-white mb-8">Shopping Cart</h1>
+          <div className="glass rounded-2xl p-6 flex flex-col gap-4">
+            {items.map(({ product, quantity }) => (
+              <div key={product.id} className="flex gap-4 border-b border-white/10 pb-4 last:border-b-0">
+                <div className="flex-1">
+                  <p className="text-white font-medium">{product.title}</p>
+                  <p className="text-white/50 text-sm">{product.brand}</p>
+                  <p className="text-purple-400 font-semibold">${product.price.toFixed(2)}</p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => updateQuantity(product.id, quantity - 1)}
+                    className="glass p-1.5 rounded-lg hover:text-purple-400 text-white/50 transition-colors"
+                    title="Decrease quantity"
+                    aria-label="Decrease quantity"
+                  >
+                    <Minus size={14} />
+                  </button>
+                  <span className="w-8 text-center text-white font-medium">{quantity}</span>
+                  <button
+                    onClick={() => updateQuantity(product.id, quantity + 1)}
+                    className="glass p-1.5 rounded-lg hover:text-purple-400 text-white/50 transition-colors"
+                    title="Increase quantity"
+                    aria-label="Increase quantity"
+                  >
+                    <Plus size={14} />
+                  </button>
+                </div>
                 <button
-                  onClick={() => updateQuantity(product.id, quantity - 1)}
-                  className="glass p-1.5 rounded-lg hover:text-purple-400 text-white/50 transition-colors"
+                  onClick={() => removeItem(product.id)}
+                  className="text-red-400/50 hover:text-red-400 transition-colors ml-2"
+                  title="Remove item"
+                  aria-label="Remove item"
                 >
-                  <Minus size={14} />
-                </button>
-                <span className="w-8 text-center text-white font-medium">{quantity}</span>
-                <button
-                  onClick={() => updateQuantity(product.id, quantity + 1)}
-                  className="glass p-1.5 rounded-lg hover:text-purple-400 text-white/50 transition-colors"
-                >
-                  <Plus size={14} />
+                  <Trash2 size={18} />
                 </button>
               </div>
-              <button
-                onClick={() => removeItem(product.id)}
-                className="text-red-400/50 hover:text-red-400 transition-colors ml-2"
-              >
-                <Trash2 size={18} />
-              </button>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         <div className="glass rounded-2xl p-6 h-fit">

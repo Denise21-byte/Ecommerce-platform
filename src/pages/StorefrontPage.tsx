@@ -42,6 +42,8 @@ const StorefrontPage = () => {
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
           className="glass rounded-lg px-4 py-2.5 text-white/70 outline-none focus:ring-2 focus:ring-purple-500/60 sm:w-48"
+          title="Filter by category"
+          aria-label="Filter by category"
         >
           <option value="" className="bg-gray-900">All Categories</option>
           {categories.map((c) => (

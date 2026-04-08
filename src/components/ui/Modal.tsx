@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { X } from 'lucide-react';
 
 interface Props {
@@ -16,7 +16,7 @@ const Modal = ({ isOpen, onClose, title, children }: Props) => {
       <div className="relative glass rounded-2xl p-6 w-full max-w-md z-10">
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold text-white font-display">{title}</h3>
-          <button onClick={onClose} className="text-white/50 hover:text-white transition-colors">
+          <button onClick={onClose} className="text-white/50 hover:text-white transition-colors" title="Close modal" aria-label="Close modal">
             <X size={20} />
           </button>
         </div>

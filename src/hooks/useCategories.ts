@@ -1,5 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getAllCategories, createCategory, updateCategory, deleteCategory } from '../api/categoryService';
+import {
+  getAllCategories,
+  createCategory,
+  updateCategory,
+  deleteCategory,
+} from '../api/categoryService';
 
 export const useCategories = () =>
   useQuery({ queryKey: ['categories'], queryFn: getAllCategories, staleTime: 1000 * 60 * 10 });

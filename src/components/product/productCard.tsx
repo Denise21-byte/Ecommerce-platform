@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { ShoppingCart } from 'lucide-react';
-import { Product } from '../../types';
 import { useCartStore } from '../../store/cartStore';
+import type { CartProduct } from '../../store/cartStore';
 import { useAuth } from '../../context/AuthContext';
 import { toast } from 'sonner';
 
-const ProductCard = ({ product }: { product: Product }) => {
+const ProductCard = ({ product }: { product: CartProduct }) => {
   const addItem = useCartStore((s) => s.addItem);
   const { isAuthenticated, userRole } = useAuth();
 
@@ -41,6 +41,8 @@ const ProductCard = ({ product }: { product: Product }) => {
             <button
               onClick={handleAddToCart}
               className="glass hover:bg-purple-500/20 text-purple-400 p-2 rounded-lg transition-colors"
+              title="Add to cart"
+              aria-label="Add to cart"
             >
               <ShoppingCart size={16} />
             </button>

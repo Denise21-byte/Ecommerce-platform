@@ -1,4 +1,4 @@
-import { Order, OrderStatus } from '../../types';
+import type { Order, OrderStatus } from '../../types';
 import { useUpdateOrderStatus } from '../../hooks/useOrders';
 import { toast } from 'sonner';
 
@@ -49,6 +49,8 @@ const OrderTable = ({ orders }: { orders: Order[] }) => {
                   value={o.status}
                   onChange={(e) => handleStatusChange(o.id, e.target.value as OrderStatus)}
                   className={`glass rounded-lg px-2 py-1 text-xs border-0 outline-none cursor-pointer ${statusColors[o.status]}`}
+                  title="Order status"
+                  aria-label="Order status"
                 >
                   {STATUS_OPTIONS.map((s) => (
                     <option key={s} value={s} className="bg-gray-900 text-white">{s}</option>

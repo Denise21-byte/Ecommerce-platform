@@ -1,15 +1,26 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Product } from '../types';
+
+export interface CartProduct {
+  id: string;
+  title: string;
+  price: number;
+  images: string[];
+  brand: string;
+  stock: number;
+  description: string;
+  category: { id: string; name: string };
+  categoryId: string;
+}
 
 interface CartItem {
-  product: Product;
+  product: CartProduct;
   quantity: number;
 }
 
 interface CartStore {
   items: CartItem[];
-  addItem: (product: Product, quantity?: number) => void;
+  addItem: (product: CartProduct, quantity?: number) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -54,9 +65,7 @@ export const useCartStore = create<CartStore>()(
       },
 
       clearCart: () => set({ items: [] }),
-
       totalItems: () => get().items.reduce((sum, i) => sum + i.quantity, 0),
-
       totalPrice: () =>
         get().items.reduce((sum, i) => sum + i.product.price * i.quantity, 0),
     }),

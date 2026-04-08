@@ -1,5 +1,10 @@
 import axiosInstance from './axiosInstance';
-import { Category } from '../types';
+
+export interface Category {
+  id: string;
+  name: string;
+  image?: string;
+}
 
 export const getAllCategories = async (): Promise<Category[]> => {
   const { data } = await axiosInstance.get<Category[]>('/categories');

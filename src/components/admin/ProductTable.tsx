@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Edit, Trash2 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { Product } from '../../types';
+import type { Product } from '../../types';
 import { useDeleteProduct } from '../../hooks/useProducts';
 import Modal from '../ui/Modal';
 import Button from '../ui/Button';
@@ -61,12 +61,16 @@ const ProductTable = ({ products }: { products: Product[] }) => {
                     <button
                       onClick={() => navigate(`/admin/products/${p.id}/edit`)}
                       className="p-1.5 rounded-lg glass hover:text-purple-400 text-white/50 transition-colors"
+                      title="Edit product"
+                      aria-label="Edit product"
                     >
                       <Edit size={15} />
                     </button>
                     <button
                       onClick={() => setDeleteId(p.id)}
                       className="p-1.5 rounded-lg glass hover:text-red-400 text-white/50 transition-colors"
+                      title="Delete product"
+                      aria-label="Delete product"
                     >
                       <Trash2 size={15} />
                     </button>

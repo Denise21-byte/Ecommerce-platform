@@ -1,5 +1,16 @@
 import axiosInstance from './axiosInstance';
-import { Cart } from '../types';
+
+export interface CartItem {
+  id: string;
+  productId: string;
+  quantity: number;
+}
+
+export interface Cart {
+  id: string;
+  items: CartItem[];
+  total: number;
+}
 
 export const getCart = async (): Promise<Cart> => {
   const { data } = await axiosInstance.get<Cart>('/cart');

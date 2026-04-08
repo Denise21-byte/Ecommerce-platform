@@ -1,5 +1,23 @@
 import axiosInstance from './axiosInstance';
-import { Product } from '../types';
+
+export interface Category {
+  id: string;
+  name: string;
+  image?: string;
+}
+
+export interface Product {
+  id: string;
+  title: string;
+  description: string;
+  price: number;
+  stock: number;
+  brand: string;
+  images: string[];
+  category: Category;
+  categoryId: string;
+  createdAt?: string;
+}
 
 export interface ProductPayload {
   title: string;
