@@ -1,75 +1,68 @@
-# React + TypeScript + Vite
+# LuxeStore — E-Commerce Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A production-grade e-commerce platform with a customer-facing storefront and a secure admin dashboard, built with React, TypeScript, TanStack Query, and Tailwind CSS.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 18 + TypeScript
+- Vite
+- React Router v6
+- TanStack Query (React Query)
+- React Hook Form + Zod
+- Axios 1.14.0
+- Zustand (cart persistence)
+- Tailwind CSS v4
+- Sonner (toast notifications)
+- Lucide React (icons)
 
-## React Compiler
+## Features
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- Public product catalog with search and category filter
+- Product detail page
+- User registration and login
+- Shopping cart with quantity controls and persistence
+- Multi-step checkout (Shipping, Payment, Order Review)
+- User profile with order history
+- Admin dashboard with product and order management
+- Role-based access control (USER vs ADMIN)
+- Fully responsive on mobile, tablet, and desktop
 
-Note: This will impact Vite dev & build performances.
+## Admin Credentials
 
-## Expanding the ESLint configuration
+These are the hardcoded admin credentials for grading purposes:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **Email:** admin@admin.com
+- **Password:** admin123
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Local Setup
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+```bash
+# 1. Clone the repository
+git clone https://github.com/Denise21-byte/Ecommerce-platform.git
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 2. Navigate into the project
+cd ecommerce-platform
+
+# 3. Install dependencies
+npm install
+
+# 4. Start the development server
+npm run dev
+
+# 5. Open in browser
+http://localhost:5173
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## API
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This project connects to the public Platzi Fake Store API:
+- Base URL: `https://api.escuelajs.co/api/v1`
+- Docs: https://fakeapi.platzi.com/
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Deployment
+
+Live URL: 
+
+## GitHub Repository
+
+https://github.com/Denise21-byte/Ecommerce-platform
