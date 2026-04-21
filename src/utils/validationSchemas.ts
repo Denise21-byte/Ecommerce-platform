@@ -22,7 +22,7 @@ export const productSchema = z.object({
   price: z.coerce.number().positive('Price must be greater than 0'),
   stock: z.coerce.number().int('Stock must be a whole number').min(0, 'Stock cannot be negative'),
   categoryId: z.string().min(1, 'Category is required'),
-  images: z.array(z.string().url('Each image must be a valid URL')).min(1, 'At least one image URL is required'),
+  images: z.array(z.string().min(1, 'Image URL cannot be empty')).min(1, 'At least one image URL is required'),
 });
 
 export const shippingSchema = z.object({
@@ -35,9 +35,7 @@ export const shippingSchema = z.object({
 });
 
 export const paymentSchema = z.object({
-  paymentMethod: z.enum(['CREDIT_CARD', 'PAYPAL', 'MOBILE_MONEY', 'CASH_ON_DELIVERY'], {
-    errorMap: () => ({ message: 'Select a valid payment method' }),
-  }),
+  paymentMethod: z.enum(['CREDIT_CARD', 'PAYPAL', 'MOBILE_MONEY', 'CASH_ON_DELIVERY']),
 });
 
 export type LoginFormData = z.infer<typeof loginSchema>;
