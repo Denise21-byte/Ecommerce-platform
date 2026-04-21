@@ -61,7 +61,7 @@ This project connects to the public Platzi Fake Store API:
 
 ## Deployment
 
-Live URL: 
+Live URL: https://ecommerce-platform-hlhr-9d6qw47uc-dshime-aline-denises-projects.vercel.app/
 
 ## GitHub Repository
 
